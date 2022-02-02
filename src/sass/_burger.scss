@@ -1,0 +1,68 @@
+ /* Menu Burger
+
+ .navbar-burger {
+    z-index: 2;
+    position: relative;
+    background: none;
+    border: none;  
+    display: block;
+    height: 40px;
+    width: 40px;
+    margin-right: 20px;
+    right: 0px;
+  }
+
+  .navbar-burger button {
+    height: 100%;
+    width: 100%;
+    background: inherit;
+    cursor: pointer;
+  }
+  
+  .burger-line,
+  .burger-line::before,
+  .burger-line::after {
+    display: block;
+    width: 40px;
+    height: 4px;
+    right: -30px;
+    border-radius: 3px;
+    background: white;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .burger-line::before,
+  .burger-line::after {
+    content: "";
+    position: absolute;
+    left: 0;
+  }
+
+  .burger-line::before {
+    transform: translateY(12px);
+  }
+
+  .burger-line::after {
+    transform: translateY(-12px);
+  }
+
+   .burger-line.active {
+    background: none;
+    width: 0px;
+  }
+
+  .active.burger-line::before {
+    transform: rotate(45deg);
+  }
+
+  .active.burger-line::after {
+    transform: rotate(-45deg);
+  }
+
+      
+@media screen and (min-width: 600px) {
+
+    .navbar-burger {
+        display:none;
+    }
+} */
