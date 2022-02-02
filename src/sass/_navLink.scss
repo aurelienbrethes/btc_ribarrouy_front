@@ -1,0 +1,13 @@
+.navlink {
+    height: 30%;
+    padding: 15px 30px 15px 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s, border-bottom 0.3s;
+
+    &:hover {
+            background-color: rgba(131, 131, 131, 0.1);
+            border-bottom: solid var(--color-pink);
+        } 
+}

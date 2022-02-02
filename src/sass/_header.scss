@@ -1,4 +1,4 @@
-.header_container{
+.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -8,53 +8,50 @@
     height: 15vh;
     width: 100%;
     transition: 0.4s ease-out;
-    background: var(--color-black);
-    box-shadow: 0px 0px 1px 1px var(--color-pink);
+    background: red;
+
+    &__burgerComponent{
+      display: none;
+    }
+
+    // @media screen and (max-width: 600px) {
+
+    //   &__navigation_component{
+    //     display: none;
+    //   }
+
 }
 
-.burger_component{
-  display: none;
-}
-
-/* Taille du logo */
-
-.header_container a {
-    height: 100%;
-}
-
-#logo_header {
-    height: 100%;
-}
 
 .header_hide{
     display: none;
 }
 
-@media screen and (max-width: 600px) {
+// @media screen and (max-width: 600px) {
 
-    .header_container{
-      height: 80px;
-    }
-    .navigation_component{
-      display: none;
-    }
+//     .header_container{
+//       height: 80px;
+//     }
+//     .navigation_component{
+//       display: none;
+//     }
 
-    .header_hide{
-      display: inherit;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: fixed;
-      z-index: 1;
-      top: 0px;
-      height: 12vh;
-      width: 100%;
-      transition: 0.4s ease-out;
-      background: var(--color-black);
-      box-shadow: 0px 0px 1px 1px var(--color-pink);
-  }
-    .header_hide a {
-      height: 100%;
-  }
+//     .header_hide{
+//       display: inherit;
+//       display: flex;
+//       justify-content: space-between;
+//       align-items: center;
+//       position: fixed;
+//       z-index: 1;
+//       top: 0px;
+//       height: 12vh;
+//       width: 100%;
+//       transition: 0.4s ease-out;
+//       background: var(--color-black);
+//       box-shadow: 0px 0px 1px 1px var(--color-pink);
+//   }
+//     .header_hide a {
+//       height: 100%;
+//   }
 
-}
+// }

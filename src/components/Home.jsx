@@ -1,10 +1,8 @@
 function Home() {
 
-  const [showLinks, setShowLinks] = useState(false);
-
   return (
-    <div className={wheel ? "header_container" : "header_hide"}>
-      <Header />
+    <div className="home">
+      <h1>Home</h1>
     </div>
   );
 }
