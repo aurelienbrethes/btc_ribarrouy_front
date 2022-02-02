@@ -12,75 +12,28 @@
     top: 0px;
 }
 
-
-
-// .navbar li
-
-// .navbar li a {
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     text-align: center;
-//     color: white;
-//     font-style: inherit;
-//     font-weight: inherit;
-//     font-size: 14px;
-// }
-
 .navlist {
     position: absolute;
     width: 100vw;
-    top : 80px;
+    top : 15vh;
     display: flex;
     flex-direction: column;
-    background-color: var(--color-black);
-    border-top: solid 1px var(--color-pink);
+    background-color: blanchedalmond;
+    height: auto;
   }
 
-//   .navlist li {
-//     height: 50px;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     border-bottom: solid 1px var(--color-pink);
-//   }
+@media screen and (max-width: 600px) {
 
-//   .navlist li a {
-//       display: flex;
-//       align-items: center;
-//       justify-content: center;
-//       color: var(--color-white);
-//       width: 100%;
-//   }
+    /* Menu déroulant */
 
-// @media screen and (max-width: 1010px) {
+    .navbar{
+      display: none;
+    }
+  }
 
-//     .navbar {
-//         width: 70%;
-//     }
+  @media screen and (min-width: 600px) {
 
-//     .navbar li {  
-//         height: 25%;
-//         padding: 20px 10px 20px 10px;
-//     }
-
-//     .navbar li a {
-//         font-size: 10px;
-//     }
-// }
-
-// @media screen and (max-width: 600px) {
-
-//     /* Menu déroulant */
-
-//     .navbar{
-//       display: none;
-//     }
-//   }
-
-//   @media screen and (min-width: 600px) {
-
-//     .navlist{
-//         display: none;
-//     }
-//   }
+    .navlist{
+        display: none;
+    }
+  }

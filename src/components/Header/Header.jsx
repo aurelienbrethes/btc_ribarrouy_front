@@ -1,16 +1,16 @@
-// import {useState} from 'react';
-// import Burger from './Burger';
+import {useState} from 'react';
+import Burger from './Burger';
 import Navigation from './Navigation';
 
-function Header() {
+function Header({wheel}) {
 
-  // const [showLinks, setShowLinks] = useState(true);
+  const [showLinks, setShowLinks] = useState(true);
 
 
   return (
-    <div className="header">
-      <Navigation className="header__navigationComponent"/>
-      {/* <Burger className="header__burgeComponent"/> */}
+    <div className={wheel ? "header" : "header_hide"}>
+      <Navigation className="header__navigationComponent" showLinks={showLinks}/>
+      <Burger className="header__burgerComponent" showLinks={showLinks} setShowLinks={setShowLinks}/>
     </div>
   );
 }

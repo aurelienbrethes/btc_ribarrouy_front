@@ -15,10 +15,10 @@ const navlinks = [
   },
 ];
 
-function Navigation() {
+function Navigation({showLinks}) {
 
   return (
-       <ul className='navbar'>
+       <ul className= { showLinks? 'navlist' : 'navbar'}>
             {navlinks.map((e, i) => (
               <NavLinks
               key={i}
