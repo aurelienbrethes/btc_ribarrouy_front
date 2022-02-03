@@ -13,12 +13,17 @@ const Event = ({title, description, date, place}) => {
         }
     }
 
+    const handleParentsClick = () => {
+        setShowModal(false)
+    };
+
+
     return (
         <div className="eventContainer">
             <h2>{title}</h2>
             <p>{date}</p>
             <button onClick={() => openModalInscriptions()}>Détails</button>
-            <div className={showModal ? "eventContainer__modal" : "eventContainer__displayNone"}>
+            <div className={showModal ? "eventContainer__modal" : "eventContainer__displayNone"} onClick={() => handleParentsClick() }>
                 <Modal
                 title={title}
                 description={description}
