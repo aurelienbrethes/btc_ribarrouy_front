@@ -1,8 +1,13 @@
-import './app.scss';
+import { useState } from "react";
+import Header from "./components/Header/Header";
+import Home from "./components/Home";
+import Contact from "./components/Contact";
+import Events from "./components/Events";
+import { Route, Routes} from "react-router-dom";
 
 function App() {
 
-  const [wheel, setWheel] = useState(false);
+  const [wheel, setWheel] = useState(true);
 
   const wheelFunction = (e) => {
     if(e.deltaY < 0){
@@ -19,7 +24,12 @@ function App() {
       <header>
         <Header wheel={wheel}/>
       </header>
-      <main>        
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/events" element={<Events />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
       </main>
     </div>
   );

@@ -1,8 +1,8 @@
-import '../../sass/navigation.scss';
+import NavLinks from "./NavLinks";
 
 const navlinks = [
   {
-    path : "/home",
+    path : "/",
     label : "Accueil"
   },
   {
@@ -19,13 +19,13 @@ function Navigation({showLinks}) {
 
   return (
        <ul className= { showLinks? 'navlist' : 'navbar'}>
-            {navlinks.map((e, i) => {
-              <Link
+            {navlinks.map((e, i) => (
+              <NavLinks
               key={i}
               path={e.path}
               label={e.label}
               />
-            })}
+            ))}
       </ul>
   );
 }

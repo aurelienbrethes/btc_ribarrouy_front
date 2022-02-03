@@ -7,8 +7,8 @@ if ( showLinks ){
 }
 
   return (
-      <div className='navbar-burger'>
-            <button type="button" onClick={() => setShowLinks(!showLinks)}>
+      <div className='burger'>
+            <button type="burger__button" onClick={() => setShowLinks(!showLinks)}>
                 <span className={brugerClass}/>
             </button>
         </div>  

@@ -4,15 +4,13 @@ import Navigation from './Navigation';
 
 function Header({wheel}) {
 
-  const [showLinks, setShowLinks] = useState(false);
+  const [showLinks, setShowLinks] = useState(true);
+
 
   return (
-    <div className={wheel ? "header_container" : "header_hide"}>
-      <a href="#home">
-        <img src={logo} alt="aurelien brethes logo" id="logo_header" />
-      </a>
-      <Navigation className="navigation_component" showLinks={showLinks}/>
-      <Burger showLinks={showLinks} setShowLinks={setShowLinks} className="burger_component" />
+    <div className={wheel ? "header" : "header_hide"}>
+      <Navigation className="header__navigationComponent" showLinks={showLinks}/>
+      <Burger className="header__burgerComponent" showLinks={showLinks} setShowLinks={setShowLinks}/>
     </div>
   );
 }
