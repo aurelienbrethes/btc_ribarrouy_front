@@ -1,16 +1,27 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import ModalConnect from "./ModalConnect";
 
 
-function Navigation({path, label}) {
+const NavLinks = ({path, label}) => {
 
-  return (
-       <li className= "navLink">
-        <Link to={path}>
-            <p>{label}</p>
-        </Link>
-      </li>
-  );
-}
+  const [modalConnect, setModalConnect] = useState(false);
 
-export default Navigation;
+  const connect = () => {
+    if (label === "Se connecter") {
+      setModalConnect(true)
+    }
+  }
+
+    return (
+        <li className= "navLink">
+          <Link to={path} onClick={() => connect()}>
+              <p>{label}</p>
+          </Link>
+           {modalConnect && <ModalConnect setModalConnect={setModalConnect} modalConnect={modalConnect} />}
+        </li>
+    );
+  }
+
+export default NavLinks;
 

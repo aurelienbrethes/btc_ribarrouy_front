@@ -17,7 +17,6 @@ const Event = ({title, description, date, place}) => {
         setShowModal(false)
     };
 
-
     return (
         <div className="eventContainer">
             <h2>{title}</h2>

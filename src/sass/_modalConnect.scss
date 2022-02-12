@@ -1,0 +1,32 @@
+.modalBack {
+
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: hotpink;
+
+    &__modal {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        background-color: cyan;
+        min-height: 30vh;
+        max-height: 50vh;
+        width: 50vw;
+        padding: 20px;
+        position: fixed;
+        z-index: 4;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        animation: fadeIn 0.4s both;
+    }
+
+    &__displayNone {
+        display: none;
+    }
+}
+

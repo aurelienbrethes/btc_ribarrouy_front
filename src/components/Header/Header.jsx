@@ -4,8 +4,7 @@ import Navigation from './Navigation';
 
 function Header({wheel}) {
 
-  const [showLinks, setShowLinks] = useState(true);
-
+  const [showLinks, setShowLinks] = useState(false);
 
   return (
     <div className={wheel ? "header" : "header_hide"}>

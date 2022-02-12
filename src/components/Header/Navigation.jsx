@@ -13,9 +13,13 @@ const navlinks = [
     path : "/contact",
     label : "Contact"
   },
+  {
+    path : "",
+    label : "Se connecter"
+  },
 ];
 
-function Navigation({showLinks}) {
+const Navigation = ({showLinks}) => {
 
   return (
        <ul className= { showLinks? 'navlist' : 'navbar'}>
