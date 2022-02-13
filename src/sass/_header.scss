@@ -7,10 +7,15 @@
     height: 15vh;
     width: 100%;
     transition: 0.4s ease-out;
-    background: red;
+    border-bottom: solid 1px var(--color-brown);
 
     &__burgerComponent{
       display: none;
+    }
+
+    img {
+      height: 100%;
+      margin-left: 20px ;
     }
 
 }

@@ -4,6 +4,8 @@ import Home from "./components/Home";
 import Contact from "./components/Contact";
 import Events from "./components/Events";
 import { Route, Routes} from "react-router-dom";
+import { ContextProvider } from './contexts/Context';
+
 
 function App() {
 
@@ -21,16 +23,18 @@ function App() {
     <div className="App"
     onWheel={(e) => wheelFunction(e) }
     >
-      <header>
-        <Header wheel={wheel}/>
-      </header>
-      <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/events" element={<Events />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </main>
+      <ContextProvider>
+        <header>
+          <Header wheel={wheel}/>
+        </header>
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/events" element={<Events />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </main>
+      </ContextProvider>
     </div>
   );
 }

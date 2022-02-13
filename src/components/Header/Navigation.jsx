@@ -1,25 +1,30 @@
+import { useContext } from "react";
 import NavLinks from "./NavLinks";
-
-const navlinks = [
-  {
-    path : "/",
-    label : "Accueil"
-  },
-  {
-    path : "/events",
-    label : "Evènements"
-  },
-  {
-    path : "/contact",
-    label : "Contact"
-  },
-  {
-    path : "",
-    label : "Se connecter"
-  },
-];
+import Context from '../../contexts/Context';
 
 const Navigation = ({showLinks}) => {
+
+  const { labelConnect } = useContext(Context);
+
+  const navlinks = [
+    {
+      path : "/",
+      label : "Accueil"
+    },
+    {
+      path : "/events",
+      label : "Evènements"
+    },
+    {
+      path : "/contact",
+      label : "Contact"
+    },
+    {
+      path : "/",
+      label : labelConnect
+    },
+  ];
+
 
   return (
        <ul className= { showLinks? 'navlist' : 'navbar'}>

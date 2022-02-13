@@ -6,7 +6,6 @@
     width: 80%;
     justify-content: space-around;
     align-items: center;
-    max-width: 1000px;
     height: 100%;
     right: 0px;
     top: 0px;
@@ -18,8 +17,10 @@
     top : 15vh;
     display: flex;
     flex-direction: column;
-    background-color: blanchedalmond;
+    background-color: var(--color-black);
     height: auto;
+    border-top: solid 1px var(--color-brown);
+
   }
 
 @media screen and (max-width: 600px) {

@@ -1,17 +1,23 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from 'axios';
 
 const ModalConnect = ({setModalConnect, modalConnect}) => {
 
-    const [login, setLogin] = useState (false);
+    const [email, setEmail] = useState ("");
+    const [password, setPassword] = useState("");
 
-    console.log(login);
-
-    useEffect(() => {
-        login && axios.post(`http://localhost:8000/api/auth/login`)
-        .then((res) => console.log(res))
-        .catch((err) => console.log(err))
-    }, [login]);
+    const handleConnect = (event) => {
+        event.preventDefault()
+        axios.post(`http://localhost:8000/api/login`, {email, password}, { withCredentials: true } )
+        .then((res) => res.data)
+        .then(() => {
+            console.log("vous êtes bien connecté");
+            setTimeout(() => {
+                window.location.reload();
+            }, 1500);
+        })
+        .catch((err) => console.log(err));
+    }
 
     const handleChildClick = (item) => {
         item.stopPropagation(item);
@@ -23,13 +29,13 @@ const ModalConnect = ({setModalConnect, modalConnect}) => {
 
     return (
         <div className={modalConnect ? "modalBack" : "displayNone"} onClick={() => handleParentsClick() }>
-            <div className="modalBack__modal" onClick={(e) => handleChildClick(e)}>
+            <form className="modalBack__modal" onClick={(e) => handleChildClick(e)}>
                 <label htmlFor="email">Email</label>
-                <input type="email" />
+                <input type="email" onChange={(e) => setEmail(e.target.value)}/>
                 <label htmlFor="password">Mot de passe</label>
-                <input type="text" />
-                <button type="submit" onClick={() => setLogin(true)}>Se connecter</button>
-            </div>
+                <input type="text" onChange={(e) => setPassword(e.target.value)} />
+                <button type="submit" onClick={(e) => handleConnect(e)}>Se connecter</button>
+            </form>
         </div>
     )
 }

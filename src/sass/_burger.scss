@@ -25,7 +25,7 @@
   width: 40px;
   height: 4px;
   border-radius: 3px;
-  background: white;
+  background: var(--color-brown);
   transition: all 0.3s ease-in-out;
 
   &::before, &::after {
@@ -33,7 +33,7 @@
     width: 40px;
     height: 4px;
     border-radius: 3px;
-    background: white;
+    background: var(--color-brown);
     transition: all 0.3s ease-in-out;
   }
 

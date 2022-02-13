@@ -1,6 +1,4 @@
 .eventContainer {
-    
-    background-color: grey;
     min-width: 20%;
     height: 25vh;
     display: flex;
@@ -8,6 +6,8 @@
     align-items: center;
     justify-content: space-around;
     padding: 3%;
+    background-color: var(--color-white);
+    border-radius: 3px;
 
     &__modal {
         position: fixed;
@@ -16,7 +16,7 @@
         left: 0;
         right: 0;
         z-index: 2;
-        background-color: hotpink;
+        background-color: var(--color-black);
     }
 
     &__displayNone {
