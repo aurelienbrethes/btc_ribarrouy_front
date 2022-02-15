@@ -8,6 +8,9 @@ export default Context;
 export const ContextProvider = ({ children }) => {
 
   const [cookies, setCookies, removeCookie] = useCookies(['monCookie']);
+  const [idEventParticipants, setIdEventParticipants] = useState();
+  const [showModalParticipants, setShowModalParticipants] = useState(false);
+
 
   // set current user to nothing !
   const logout = () => {
@@ -36,7 +39,11 @@ export const ContextProvider = ({ children }) => {
         cookies,
         setCookies,
         removeCookie,
-        labelConnect
+        labelConnect,
+        showModalParticipants,
+        setShowModalParticipants,
+        idEventParticipants,
+        setIdEventParticipants
       }}>
       {children}
     </Context.Provider>

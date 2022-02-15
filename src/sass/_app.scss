@@ -9,7 +9,7 @@
 
 html {
   scroll-behavior: smooth;
-  background-color: #141414;
+  background-color: var(--color-white);
 }
 
   
@@ -51,12 +51,11 @@ html {
   
     &:hover {
       box-shadow: 0 0 40px 40px var(--color-brown) inset;
-    }
-    &:focus {
       color: var(--color-white);
       outline: 0;
     }
   }
+
 
   
   

@@ -8,6 +8,7 @@
     width: 100%;
     transition: 0.4s ease-out;
     border-bottom: solid 1px var(--color-brown);
+    background-color: var(--color-black);
 
     &__burgerComponent{
       display: none;

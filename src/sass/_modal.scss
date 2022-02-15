@@ -14,6 +14,7 @@
     transform: translate(-50%, -50%);
     animation: fadeIn 0.4s both;
     background-color: var(--color-white);
+    border: solid 1px var(--color-brown);
 
     & section {
         display: flex;

@@ -2,7 +2,7 @@ import { useState } from "react";
 import Header from "./components/Header/Header";
 import Home from "./components/Home";
 import Contact from "./components/Contact";
-import Events from "./components/Events";
+import Events from "./components/Events/Events";
 import { Route, Routes} from "react-router-dom";
 import { ContextProvider } from './contexts/Context';
 

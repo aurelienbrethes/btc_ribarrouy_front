@@ -1,14 +1,17 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import Context from '../../contexts/Context';
 
-const Modal = ({title, description, date, place, setShowModal}) => {
+
+const ModalInscription = ({title, description, date, place, setShowModal, idEvent}) => {
+
+    const { cookies, setShowModalParticipants, setIdEventParticipants } = useContext(Context);
 
     const [nom, setNom] = useState('');
     const [prenom, setPrenom] = useState('');
     const [licence, setLicence] = useState('');
     const [tel, setTel] = useState();
     const [email, setEmail] = useState('');
-    const idEvent = 1;
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -30,9 +33,19 @@ const Modal = ({title, description, date, place, setShowModal}) => {
         }        
     }
 
+    // const handleParentsClick = () => {
+    //     setShowModalCreateEvent(false)
+    // };
+
     const handleChildClick = (item) => {
         item.stopPropagation(item);
     };
+
+    const handleChangeModal = () => {
+        setShowModalParticipants(true);
+        setShowModal(false);
+        setIdEventParticipants(idEvent);
+    }
 
     return (
             <div className="modal" onClick={(e) => handleChildClick(e)}>
@@ -61,8 +74,11 @@ const Modal = ({title, description, date, place, setShowModal}) => {
                     </aside>
                 </section>
                 <button onClick={() => setShowModal(false)}>Fermer</button>
+                {cookies.monCookie &&
+                    <button onClick={() => handleChangeModal()}>Voir les inscrits</button>         
+                }
             </div>
     )
 }
 
-export default Modal;
+export default ModalInscription;
