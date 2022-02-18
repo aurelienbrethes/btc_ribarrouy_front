@@ -1,34 +1,32 @@
-import React, { createContext, useState } from 'react';
-import { useCookies } from 'react-cookie';
+import React, { createContext, useState } from "react";
+import { useCookies } from "react-cookie";
 
 const Context = createContext();
 
 export default Context;
 
 export const ContextProvider = ({ children }) => {
-
-  const [cookies, setCookies, removeCookie] = useCookies(['monCookie']);
+  const [cookies, setCookies, removeCookie] = useCookies(["monCookie"]);
   const [idEventParticipants, setIdEventParticipants] = useState();
   const [showModalParticipants, setShowModalParticipants] = useState(false);
-
+  const [showModalUpdateEvent, setShowModalUpdateEvent] = useState(false);
 
   // set current user to nothing !
   const logout = () => {
-    removeCookie('monCookie');
+    removeCookie("monCookie");
     window.location.reload();
   };
 
   // label link connection
   let labelConnect = "Se connecter";
 
-  if(cookies.monCookie) {
+  if (cookies.monCookie) {
     labelConnect = "Déconnexion";
   }
 
-
   // Login
 
-  const [login, setLogin] = useState (false);
+  const [login, setLogin] = useState(false);
 
   return (
     <Context.Provider
@@ -43,8 +41,11 @@ export const ContextProvider = ({ children }) => {
         showModalParticipants,
         setShowModalParticipants,
         idEventParticipants,
-        setIdEventParticipants
-      }}>
+        setIdEventParticipants,
+        showModalUpdateEvent,
+        setShowModalUpdateEvent,
+      }}
+    >
       {children}
     </Context.Provider>
   );
