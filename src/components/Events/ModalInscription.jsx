@@ -2,6 +2,12 @@ import axios from "axios";
 import { useState, useContext } from "react";
 import Context from "../../contexts/Context";
 
+const foodArray = [];
+
+for (let i = 0; i < 30; i++) {
+  foodArray.push(i);
+}
+
 const ModalInscription = ({
   title,
   description,
@@ -15,7 +21,6 @@ const ModalInscription = ({
     setShowModalParticipants,
     setIdEventParticipants,
     setShowModalUpdateEvent,
-    setShowModalInscription,
   } = useContext(Context);
 
   const [lastname, setLastname] = useState("");
@@ -23,11 +28,25 @@ const ModalInscription = ({
   const [licence, setLicence] = useState("");
   const [phone, setPhone] = useState();
   const [email, setEmail] = useState("");
+  const [club, setClub] = useState("");
+  const [category, setCategory] = useState("");
+  const [food, setFood] = useState(0);
+  const [day, setDay] = useState(0);
   const [deleteEvent, setDeleteEvent] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (lastname + firstname + licence + email + phone + idEvent) {
+    if (
+      lastname &&
+      firstname &&
+      licence &&
+      phone &&
+      email &&
+      club &&
+      category &&
+      food &&
+      day
+    ) {
       axios
         .post(`http://localhost:8000/api/participants`, {
           lastname,
@@ -35,7 +54,11 @@ const ModalInscription = ({
           licence,
           email,
           phone,
+          club,
+          category,
+          food,
           idEvent,
+          day,
         })
         .then(() => console.log("participant créé"))
         .catch((err) => console.log(err));
@@ -98,6 +121,12 @@ const ModalInscription = ({
               id="firstname"
               onChange={(e) => setFirstname(e.target.value)}
             />
+            <label htmlFor="club">Club</label>
+            <input
+              type="club"
+              id="club"
+              onChange={(e) => setClub(e.target.value)}
+            />
             <label htmlFor="licenceNumber">Numéro de licence</label>
             <input
               type="text"
@@ -116,6 +145,43 @@ const ModalInscription = ({
               id="email"
               onChange={(e) => setEmail(e.target.value)}
             />
+            <label htmlFor="category">Catégorie</label>
+            <select
+              name="category"
+              id="category"
+              onChange={(e) => setCategory(e.value.target)}
+            >
+              <option value="1ereSerie">1ère Série</option>
+              <option value="2emeSerie">2ème Série</option>
+              <option value="3emeSerie">3ème Série</option>
+              <option value="4emeSerie">4ème Série</option>
+              <option value="veteran">Vétéran</option>
+              <option value="super veteran">Super Vétéran</option>
+              <option value="master">Master</option>
+              <option value="handisport">Handisport</option>
+              <option value="dame">Dame</option>
+              <option value="junior">Junior</option>
+              <option value="cadet">Cadet</option>
+            </select>
+            <label htmlFor="day">Jour</label>
+            <select
+              name="day"
+              id="day"
+              onChange={(e) => setDay(e.target.value)}
+            >
+              <option value="1">1</option>
+              <option value="2">2</option>
+            </select>
+            <label htmlFor="food">Repas</label>
+            <select
+              name="food"
+              id="food"
+              onChange={(e) => setFood(e.target.value)}
+            >
+              {foodArray.map((item) => (
+                <option value={item}>{item}</option>
+              ))}
+            </select>
             <button type="submit" onClick={(e) => handleSubmit(e)}>
               S'inscrire
             </button>
