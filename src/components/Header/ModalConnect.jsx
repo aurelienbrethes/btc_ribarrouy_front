@@ -40,7 +40,7 @@ const ModalConnect = ({ setModalConnect, modalConnect }) => {
         <label htmlFor="email">Email</label>
         <input type="email" onChange={(e) => setEmail(e.target.value)} />
         <label htmlFor="password">Mot de passe</label>
-        <input type="text" onChange={(e) => setPassword(e.target.value)} />
+        <input type="password" onChange={(e) => setPassword(e.target.value)} />
         <button type="submit" onClick={(e) => handleConnect(e)}>
           Se connecter
         </button>
