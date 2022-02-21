@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useContext } from "react";
 import Context from "../../contexts/Context";
+import { Link } from "react-router-dom";
 
 const foodArray = [];
 
@@ -69,12 +70,6 @@ const ModalInscription = ({
 
   const handleChildClick = (item) => {
     item.stopPropagation(item);
-  };
-
-  const handleChangeModal = () => {
-    setShowModalParticipants(true);
-    setShowModal(false);
-    setIdEventParticipants(idEvent);
   };
 
   const handleDeleteEvent = (e) => {
@@ -212,8 +207,10 @@ const ModalInscription = ({
       {cookies.monCookie ? (
         <div className="modalInscription__bottom">
           <div>
-            <button onClick={() => handleChangeModal()}>
-              Voir les inscrits
+            <button>
+              <Link to="/participants">
+                <p>Voir les participants</p>
+              </Link>
             </button>
             <button onClick={() => handleUpdateEvent()}>Modifier</button>
             <button onClick={() => setDeleteEvent(true)}>Supprimer</button>

@@ -1,0 +1,23 @@
+.participant {
+  min-height: 80vh;
+  width: 100vw;
+  background-color: pink;
+  margin-top: 15vh;
+
+  & table {
+    width: 100%;
+
+    & th {
+      width: 10%;
+    }
+
+    & td {
+      width: 10%;
+      text-align: center;
+    }
+
+    & tbody {
+      margin-top: 2em;
+    }
+  }
+}

@@ -3,12 +3,10 @@ import axios from "axios";
 import Event from "./Event.jsx";
 import Context from "../../contexts/Context";
 import ModalCreacteEvent from "./ModalCreateEvent.jsx";
-import ModalParticipants from "./ModalParticipants.jsx";
 import ModalUpdateEvent from "./ModalUpdateEvent.jsx";
 
 const Events = ({ setShowModal }) => {
-  const { cookies, showModalParticipants, showModalUpdateEvent } =
-    useContext(Context);
+  const { cookies, showModalUpdateEvent } = useContext(Context);
   const [events, setEvents] = useState([]);
   const [showModalCreateEvent, setShowModalCreateEvent] = useState(false);
   const [nextEvents, setNextEvents] = useState([]);
@@ -80,7 +78,6 @@ const Events = ({ setShowModal }) => {
                 showModalCreateEvent={showModalCreateEvent}
               />
             )}
-            {showModalParticipants && <ModalParticipants />}
             {showModalUpdateEvent && <ModalUpdateEvent />}
           </section>
         </div>
