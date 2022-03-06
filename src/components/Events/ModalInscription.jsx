@@ -1,7 +1,9 @@
 import axios from "axios";
 import { useState, useContext } from "react";
 import Context from "../../contexts/Context";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const foodArray = [];
 
@@ -17,12 +19,8 @@ const ModalInscription = ({
   setShowModal,
   idEvent,
 }) => {
-  const {
-    cookies,
-    setShowModalParticipants,
-    setIdEventParticipants,
-    setShowModalUpdateEvent,
-  } = useContext(Context);
+  const { cookies, setIdEventParticipants, setShowModalUpdateEvent } =
+    useContext(Context);
 
   const [lastname, setLastname] = useState("");
   const [firstname, setFirstname] = useState("");
@@ -30,10 +28,14 @@ const ModalInscription = ({
   const [phone, setPhone] = useState();
   const [email, setEmail] = useState("");
   const [club, setClub] = useState("");
-  const [category, setCategory] = useState("");
-  const [food, setFood] = useState(0);
-  const [day, setDay] = useState(0);
+  const [category, setCategory] = useState("1ère Série");
+  const [food, setFood] = useState(1);
+  const [day, setDay] = useState(1);
   const [deleteEvent, setDeleteEvent] = useState(false);
+
+  let navigate = useNavigate();
+
+  // Submit the inscription
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -61,16 +63,23 @@ const ModalInscription = ({
           idEvent,
           day,
         })
-        .then(() => console.log("participant créé"))
+        .then(() => {
+          toast.success("Inscription réussie !");
+        })
+        .then(() => navigate("/"))
         .catch((err) => console.log(err));
     } else {
-      console.log("informations incomplètes");
+      toast.error("Informations incomplètes");
     }
   };
+
+  // Modal background
 
   const handleChildClick = (item) => {
     item.stopPropagation(item);
   };
+
+  // delete Event
 
   const handleDeleteEvent = (e) => {
     e.preventDefault();
@@ -78,13 +87,18 @@ const ModalInscription = ({
       .delete(`http://localhost:8000/api/events/${idEvent}`, {
         withCredentials: true,
       })
-      .then(() => console.log("Evenement supprimé"))
       .then(() => {
-        setTimeout(() => {
-          window.location.reload();
-        }, 1000);
+        toast.success("Evènement supprimé avec succès");
+        setShowModal(false);
+        setDeleteEvent(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error("Un problème s'est produit");
       });
   };
+
+  // Update Evant
 
   const handleUpdateEvent = () => {
     setShowModalUpdateEvent(true);
@@ -156,26 +170,28 @@ const ModalInscription = ({
             <div>
               <label htmlFor="category">Catégorie</label>
               <select
+                defaultValue={"1ère Série"}
                 name="category"
                 id="category"
                 onChange={(e) => setCategory(e.target.value)}
               >
-                <option value="1ère Serie">1ère Série</option>
-                <option value="2ème Serie">2ème Série</option>
-                <option value="3ème Serie">3ème Série</option>
-                <option value="4ème Serie">4ème Série</option>
-                <option value="vétéran">Vétéran</option>
-                <option value="super vétéran">Super Vétéran</option>
-                <option value="master">Master</option>
-                <option value="handisport">Handisport</option>
-                <option value="dame">Dame</option>
-                <option value="junior">Junior</option>
-                <option value="cadet">Cadet</option>
+                <option value="1ère Série">1ère Série</option>
+                <option value="2ème Série">2ème Série</option>
+                <option value="3ème Série">3ème Série</option>
+                <option value="4ème Série">4ème Série</option>
+                <option value="Vétéran">Vétéran</option>
+                <option value="Super Vétéran">Super Vétéran</option>
+                <option value="Master">Master</option>
+                <option value="Handisport">Handisport</option>
+                <option value="Dame">Dame</option>
+                <option value="Junior">Junior</option>
+                <option value="Cadet">Cadet</option>
               </select>
             </div>
             <div>
               <label htmlFor="day">Jour</label>
               <select
+                defaultValue={"1"}
                 name="day"
                 id="day"
                 onChange={(e) => setDay(e.target.value)}
@@ -187,6 +203,7 @@ const ModalInscription = ({
             <div>
               <label htmlFor="food">Repas</label>
               <select
+                defaultValue={1}
                 name="food"
                 id="food"
                 onChange={(e) => setFood(e.target.value)}
@@ -205,7 +222,7 @@ const ModalInscription = ({
         </aside>
       </section>
       {cookies.monCookie ? (
-        <div className="modalInscription__bottom">
+        <div className="modalInscription__bottomConnected">
           <div>
             <button>
               <Link to="/participants">
@@ -225,12 +242,19 @@ const ModalInscription = ({
           )}
         </div>
       ) : (
-        <button
-          className="modalInscription__closeButton"
-          onClick={() => setShowModal(false)}
-        >
-          Fermer
-        </button>
+        <div className="modalInscription__bottomDisconnected">
+          <button>
+            <Link to="/participants">
+              <p>Voir les participants</p>
+            </Link>
+          </button>
+          <button
+            className="modalInscription__closeButton"
+            onClick={() => setShowModal(false)}
+          >
+            Fermer
+          </button>
+        </div>
       )}
     </div>
   );

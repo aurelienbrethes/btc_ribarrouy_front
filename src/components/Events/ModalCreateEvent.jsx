@@ -1,5 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+
+import "react-toastify/dist/ReactToastify.css";
 
 const ModalCreacteEvent = ({
   setShowModalCreateEvent,
@@ -10,22 +14,27 @@ const ModalCreacteEvent = ({
   const [place, setPlace] = useState("");
   const [date, setDate] = useState("");
 
+  let navigate = useNavigate();
+
   const handleCreateEvent = (event) => {
     event.preventDefault();
-    axios
-      .post(
-        `http://localhost:8000/api/events`,
-        { title, description, date, place },
-        { withCredentials: true }
-      )
-      .then((res) => res.data)
-      .then(() => {
-        console.log("Votre évènement a bien été créé");
-        setTimeout(() => {
-          window.location.reload();
-        }, 1500);
-      })
-      .catch((err) => console.log(err));
+    if (title && description && place && date) {
+      axios
+        .post(
+          `http://localhost:8000/api/events`,
+          { title, description, date, place },
+          { withCredentials: true }
+        )
+        .then(() => {
+          toast.success("Votre évènement a bien été créé");
+          navigate("/");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      toast.error("Informations manquantes");
+    }
   };
 
   const handleChildClick = (item) => {

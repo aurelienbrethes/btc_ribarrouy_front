@@ -6,8 +6,8 @@ import ModalCreacteEvent from "./ModalCreateEvent.jsx";
 import ModalUpdateEvent from "./ModalUpdateEvent.jsx";
 
 const Events = ({ setShowModal }) => {
-  const { cookies, showModalUpdateEvent } = useContext(Context);
-  const [events, setEvents] = useState([]);
+  const { cookies, showModalUpdateEvent, events, setEvents } =
+    useContext(Context);
   const [showModalCreateEvent, setShowModalCreateEvent] = useState(false);
   const [nextEvents, setNextEvents] = useState([]);
   const [pastEvents, setPastEvents] = useState([]);
@@ -18,7 +18,7 @@ const Events = ({ setShowModal }) => {
       .get("http://localhost:8000/api/events")
       .then((res) => setEvents(res.data))
       .catch((err) => console.log(err));
-  }, []);
+  }, [events]);
 
   useEffect(() => {
     events.length &&

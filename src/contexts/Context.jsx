@@ -11,6 +11,7 @@ export const ContextProvider = ({ children }) => {
   const [showModalParticipants, setShowModalParticipants] = useState(false);
   const [showModalUpdateEvent, setShowModalUpdateEvent] = useState(false);
   const [participants, setParticipants] = useState([]);
+  const [events, setEvents] = useState([]);
 
   // set current user to nothing !
   const logout = () => {
@@ -47,6 +48,8 @@ export const ContextProvider = ({ children }) => {
         setShowModalUpdateEvent,
         participants,
         setParticipants,
+        events,
+        setEvents,
       }}
     >
       {children}

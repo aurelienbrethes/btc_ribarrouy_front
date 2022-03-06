@@ -1,4 +1,4 @@
-import { useEffect, useContext, useState } from "react";
+import { useContext, useState } from "react";
 import ModalInscription from "./ModalInscription";
 import Context from "../../contexts/Context";
 
@@ -9,6 +9,7 @@ const Event = ({ title, description, date, place, idEvent }) => {
   const dateToDisplay = new Date(date).toLocaleDateString();
 
   const openModalInscriptions = () => {
+    setIdEventParticipants(idEvent);
     if (!showModal) {
       setShowModal(true);
     }
@@ -17,10 +18,6 @@ const Event = ({ title, description, date, place, idEvent }) => {
   const handleParentsClick = () => {
     setShowModal(false);
   };
-
-  useEffect(() => {
-    setIdEventParticipants(idEvent);
-  }, []);
 
   return (
     <div className="eventContainer">

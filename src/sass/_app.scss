@@ -23,6 +23,9 @@ li {
 a {
   text-decoration: none;
   color: var(--color-brown);
+  &:hover {
+    color: var(--color-white);
+  }
 }
 
 button {

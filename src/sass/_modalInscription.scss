@@ -72,7 +72,7 @@
   &__right {
     height: 100%;
   }
-  &__bottom {
+  &__bottomConnected {
     width: 100%;
 
     & div {
@@ -81,5 +81,13 @@
       align-items: center;
       margin-top: 1em;
     }
+  }
+
+  &__bottomDisconnected {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 1em;
   }
 }

@@ -1,14 +1,32 @@
 .participant {
   min-height: 80vh;
   width: 100vw;
-  background-color: pink;
   margin-top: 15vh;
+
+  & h1 {
+    margin: 3em 0 0 3em;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 3em 0 3em 0;
+  }
+
+  &__main {
+    margin: 2em 0 2em 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
   & table {
     width: 100%;
 
     & th {
       width: 10%;
+      text-align: center;
     }
 
     & td {
@@ -17,7 +35,7 @@
     }
 
     & tbody {
-      margin-top: 2em;
+      padding-top: 2em;
     }
   }
 }

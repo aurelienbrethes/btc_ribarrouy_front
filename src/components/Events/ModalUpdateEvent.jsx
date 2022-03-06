@@ -1,6 +1,8 @@
 import { useState, useContext } from "react";
 import axios from "axios";
 import Context from "../../contexts/Context";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ModalUpdateEvent = () => {
   const { setShowModalUpdateEvent, showModalUpdateEvent, idEventParticipants } =
@@ -11,24 +13,24 @@ const ModalUpdateEvent = () => {
   const [place, setPlace] = useState("");
   const [date, setDate] = useState("");
 
-  console.log(idEventParticipants);
-
   const handleUpdateEvent = (event) => {
     event.preventDefault();
-    axios
-      .put(
-        `http://localhost:8000/api/events/${idEventParticipants}`,
-        { title, description, place, date },
-        { withCredentials: true }
-      )
-      .then((res) => res.data)
-      .then(() => {
-        console.log("Votre évènement a bien été modifié");
-        setTimeout(() => {
-          window.location.reload();
-        }, 1500);
-      })
-      .catch((err) => console.log(err));
+    if (title && description && place && date) {
+      axios
+        .put(
+          `http://localhost:8000/api/events/${idEventParticipants}`,
+          { title, description, place, date },
+          { withCredentials: true }
+        )
+        .then((res) => res.data)
+        .then(() => {
+          toast.success("Votre évènement a bien été modifié !");
+          setShowModalUpdateEvent(false);
+        })
+        .catch((err) => console.log(err));
+    } else {
+      toast.error("Informations manquantes");
+    }
   };
 
   const handleChildClick = (item) => {
