@@ -12,19 +12,14 @@ export const ContextProvider = ({ children }) => {
   const [showModalUpdateEvent, setShowModalUpdateEvent] = useState(false);
   const [participants, setParticipants] = useState([]);
   const [events, setEvents] = useState([]);
+  const [isConnected, setIsConnected] = useState(false);
 
   // set current user to nothing !
   const logout = () => {
+    setIsConnected(false);
     removeCookie("monCookie");
     window.location.reload();
   };
-
-  // label link connection
-  let labelConnect = "Se connecter";
-
-  if (cookies.monCookie) {
-    labelConnect = "Déconnexion";
-  }
 
   // Login
 
@@ -39,7 +34,6 @@ export const ContextProvider = ({ children }) => {
         cookies,
         setCookies,
         removeCookie,
-        labelConnect,
         showModalParticipants,
         setShowModalParticipants,
         idEventParticipants,
@@ -50,6 +44,8 @@ export const ContextProvider = ({ children }) => {
         setParticipants,
         events,
         setEvents,
+        isConnected,
+        setIsConnected,
       }}
     >
       {children}

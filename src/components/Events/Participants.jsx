@@ -16,9 +16,13 @@ const categories = [
   "Cadet",
 ];
 
+let dataArray = ["coucou"];
+
 const Participants = () => {
   const { idEventParticipants, setParticipants, participants, events } =
     useContext(Context);
+
+  // let dataSerie1 = "coucou";
 
   useEffect(() => {
     axios
@@ -31,44 +35,22 @@ const Participants = () => {
           events.find((event) => event.id === idEventParticipants)
         );
       })
+      // .then(() => {
+      //   let dataToPush = categories.map((category, index) => {
+      //     const categorizedParticipants = participants.filter(
+      //       (participant) => participant.category === category
+      //     );
+      //     dataArray[index] = [{ category }, { categorizedParticipants }];
+      //   });
+      //   dataArray.push(dataToPush);
+      // })
       .catch((err) => console.log(err));
   }, [idEventParticipants]);
 
+  console.log(dataArray);
+
   const [currentEvent, setCurrentEvent] = useState([]);
-  const [sortParticipants, setSortParticipants] = useState("");
-
-  // function downloadCSVFile(csv, filename) {
-  //   const csv_file = new Blob([csv], { type: "text/csv" });
-  //   const download_link = document.createElement("a");
-
-  //   download_link.download = filename;
-
-  //   download_link.href = window.URL.createObjectURL(csv_file);
-
-  //   download_link.style.display = "none";
-
-  //   document.body.appendChild(download_link);
-
-  //   download_link.click();
-  // }
-
-  // function htmlToCSV(html, filename) {
-  //   let data = [];
-  //   let rows = document.querySelectorAll("table tr");
-
-  //   for (let i = 0; i < rows.length; i++) {
-  //     var row = [],
-  //       cols = rows[i].querySelectorAll("td, th");
-
-  //     for (let j = 0; j < cols.length; j++) {
-  //       row.push(cols[j].innerText);
-  //     }
-
-  //     data.push(row.join(","));
-  //   }
-  //   downloadCSVFile(data.join("\n"), filename);
-
-  // }
+  // const [sortParticipants, setSortParticipants] = useState("");
 
   return (
     <div className="participant">
@@ -78,19 +60,6 @@ const Participants = () => {
         <h3>{new Date(currentEvent.date).toLocaleDateString()}</h3>
         <h3>{currentEvent.place}</h3>
       </section>
-      {/* <section>
-        <select
-          name="sort"
-          id="sort"
-          onChange={(e) => setSortParticipants(e.target.value)}
-        >
-          <option value="category">Catégorie</option>
-          <option value="day">Jour</option>
-          <option value="club">Club</option>
-          <option value="lastname">Nom</option>
-        </select>
-      </section> */}
-
       {categories.map((category, index) => (
         <div key={index} className="participant__main">
           <h2>{category}</h2>
@@ -127,7 +96,7 @@ const Participants = () => {
                   ))
               ) : (
                 <tr>
-                  <td>
+                  <td id="emptyEvent">
                     Cet évènement n'a pas encore d'inscrits dans cette catégorie
                   </td>
                 </tr>
@@ -136,8 +105,6 @@ const Participants = () => {
           </table>
         </div>
       ))}
-
-      {/* <button onClick={() => htmlToCSV()}>Export</button> */}
     </div>
   );
 };

@@ -1,9 +1,21 @@
-import { useContext } from "react";
 import NavLinks from "./NavLinks";
-import Context from "../../contexts/Context";
+import { useCookies } from "react-cookie";
+import { useEffect, useState } from "react";
 
 const Navigation = ({ showLinks }) => {
-  const { labelConnect } = useContext(Context);
+  const [cookies] = useCookies(["name"]);
+
+  // label link connection
+
+  const [labelConnect, setLabelConnect] = useState("Se connecter");
+
+  useEffect(() => {
+    if (cookies.monCookie) {
+      setLabelConnect("Déconnexion");
+    } else {
+      setLabelConnect("Se connecter");
+    }
+  }, [cookies.monCookie]);
 
   const navlinks = [
     {

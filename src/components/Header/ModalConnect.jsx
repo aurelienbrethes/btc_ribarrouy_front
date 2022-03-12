@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const ModalConnect = ({ setModalConnect, modalConnect }) => {
   const [email, setEmail] = useState("");
@@ -7,20 +8,21 @@ const ModalConnect = ({ setModalConnect, modalConnect }) => {
 
   const handleConnect = (event) => {
     event.preventDefault();
-    axios
-      .post(
-        `http://localhost:8000/api/login`,
-        { email, password },
-        { withCredentials: true }
-      )
-      .then((res) => res.data)
-      .then(() => {
-        console.log("vous êtes bien connecté");
-        setTimeout(() => {
-          window.location.reload();
-        }, 1500);
-      })
-      .catch((err) => console.log(err));
+    if (email && password) {
+      axios
+        .post(
+          `http://localhost:8000/api/login`,
+          { email, password },
+          { withCredentials: true }
+        )
+        .then(() => window.location.reload())
+        .catch((err) => {
+          console.log(err);
+          toast.error("Email ou mot de passe invalide");
+        });
+    } else {
+      toast.error("Email ou mot de passe manquant");
+    }
   };
 
   const handleChildClick = (item) => {

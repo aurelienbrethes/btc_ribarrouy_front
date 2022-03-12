@@ -4,12 +4,12 @@
   font-family: Open Sans, mm-main, arial, sans-serif;
   --color-black: #141414;
   --color-brown: #e1a54a;
-  --color-white: white;
+  --color-white: #f0f0f0;
 }
 
 html {
   scroll-behavior: smooth;
-  background-color: var(--color-white);
+  background: linear-gradient(#f0f0f0, #ededed);
 }
 
 h1 {

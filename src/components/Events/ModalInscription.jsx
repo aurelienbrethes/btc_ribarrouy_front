@@ -66,7 +66,7 @@ const ModalInscription = ({
         .then(() => {
           toast.success("Inscription réussie !");
         })
-        .then(() => navigate("/"))
+        .then(() => navigate("/participants"))
         .catch((err) => console.log(err));
     } else {
       toast.error("Informations incomplètes");

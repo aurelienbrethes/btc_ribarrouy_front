@@ -1,7 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
 
 import "react-toastify/dist/ReactToastify.css";
 
@@ -14,8 +13,6 @@ const ModalCreacteEvent = ({
   const [place, setPlace] = useState("");
   const [date, setDate] = useState("");
 
-  let navigate = useNavigate();
-
   const handleCreateEvent = (event) => {
     event.preventDefault();
     if (title && description && place && date) {
@@ -27,7 +24,7 @@ const ModalCreacteEvent = ({
         )
         .then(() => {
           toast.success("Votre évènement a bien été créé");
-          navigate("/");
+          setShowModalCreateEvent(false);
         })
         .catch((err) => {
           console.log(err);

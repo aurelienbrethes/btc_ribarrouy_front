@@ -4,7 +4,7 @@ import ModalConnect from "./ModalConnect";
 import Context from "../../contexts/Context";
 
 const NavLinks = ({ path, label }) => {
-  const { logout, cookies } = useContext(Context);
+  const { logout, isConnected } = useContext(Context);
   const [modalConnect, setModalConnect] = useState(false);
 
   const connect = () => {
@@ -20,7 +20,7 @@ const NavLinks = ({ path, label }) => {
       <Link to={path} onClick={() => connect()}>
         <p>{label}</p>
       </Link>
-      {modalConnect && !cookies.monCookie && (
+      {modalConnect && !isConnected && (
         <ModalConnect
           setModalConnect={setModalConnect}
           modalConnect={modalConnect}
