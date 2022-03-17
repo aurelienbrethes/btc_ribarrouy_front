@@ -16,13 +16,18 @@ const categories = [
   "Cadet",
 ];
 
-let dataArray = ["coucou"];
-
 const Participants = () => {
   const { idEventParticipants, setParticipants, participants, events } =
     useContext(Context);
 
-  // let dataSerie1 = "coucou";
+  const [categoryToDisplay, setCategoryToDisplay] = useState("");
+  const [displayAllCat, setDisplayAllCat] = useState(true);
+
+  const handleChangeCategory = (category) => {
+    setCategoryToDisplay(category);
+    setDisplayAllCat(false);
+  };
+  console.log(categoryToDisplay);
 
   useEffect(() => {
     axios
@@ -35,22 +40,10 @@ const Participants = () => {
           events.find((event) => event.id === idEventParticipants)
         );
       })
-      // .then(() => {
-      //   let dataToPush = categories.map((category, index) => {
-      //     const categorizedParticipants = participants.filter(
-      //       (participant) => participant.category === category
-      //     );
-      //     dataArray[index] = [{ category }, { categorizedParticipants }];
-      //   });
-      //   dataArray.push(dataToPush);
-      // })
       .catch((err) => console.log(err));
   }, [idEventParticipants]);
 
-  console.log(dataArray);
-
   const [currentEvent, setCurrentEvent] = useState([]);
-  // const [sortParticipants, setSortParticipants] = useState("");
 
   return (
     <div className="participant">
@@ -60,7 +53,25 @@ const Participants = () => {
         <h3>{new Date(currentEvent.date).toLocaleDateString()}</h3>
         <h3>{currentEvent.place}</h3>
       </section>
-      {categories.map((category, index) => (
+      <p>Filtrer par catégorie :</p>
+      <select
+        onChange={(e) => handleChangeCategory(e.target.value)}
+        name="sortParticipants"
+        id="sortParticipants"
+      >
+        <option value="" onClick={() => setDisplayAllCat(true)}>
+          Toutes
+        </option>
+        {categories.map((category, index) => (
+          <option key={index} value={category}>
+            {category}
+          </option>
+        ))}
+      </select>
+      {(displayAllCat
+        ? categories
+        : categories.filter((category) => category === categoryToDisplay)
+      ).map((category, index) => (
         <div key={index} className="participant__main">
           <h2>{category}</h2>
           <table id="table">

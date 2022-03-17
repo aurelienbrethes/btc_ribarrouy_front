@@ -11,7 +11,7 @@ const ModalConnect = ({ setModalConnect, modalConnect }) => {
     if (email && password) {
       axios
         .post(
-          `http://localhost:8000/api/login`,
+          `http://localhost:8000/api/auth/login`,
           { email, password },
           { withCredentials: true }
         )
