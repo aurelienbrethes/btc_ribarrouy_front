@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Header from "./components/Header/Header";
-import Home from "./components/Home";
+import Home from "./components/Home/Home";
 import Contact from "./components/Contact";
 import Events from "./components/Events/Events";
 import { Route, Routes } from "react-router-dom";

@@ -1,15 +1,20 @@
 function Burger({ showLinks, setShowLinks }) {
-  let brugerClass = "burger-line";
+  let burgerClass = "burger-line";
 
   if (showLinks) {
-    brugerClass += " active";
+    burgerClass += " open";
   }
 
   return (
-    <div className="burger">
-      <button type="burger__button" onClick={() => setShowLinks(!showLinks)}>
-        <span className={brugerClass} />
-      </button>
+    <div
+      className={burgerClass}
+      id="burger"
+      onClick={() => setShowLinks(!showLinks)}
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
   );
 }

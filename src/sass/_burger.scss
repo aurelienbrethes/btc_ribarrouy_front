@@ -1,73 +1,79 @@
-/* Menu Burger */
-
-.burger {
-  z-index: 2;
-  position: absolute;
-  background: none;
-  border: none;
-  display: block;
+#burger {
+  width: 40px;
   height: 40px;
-  width: 40px;
-  margin-right: 20px;
-  right: 0px;
-
-  button {
-    height: 100%;
-    width: 100%;
-    background: inherit;
-    cursor: pointer;
-    border-width: 0;
-  }
+  right: 20px;
+  position: absolute;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: 0.5s ease-in-out;
+  -moz-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+  cursor: pointer;
 }
 
-.burger-line {
+#burger span {
   display: block;
-  width: 40px;
+  position: absolute;
   height: 4px;
-  border-radius: 3px;
+  width: 100%;
   background: var(--color-brown);
-  transition: all 0.3s ease-in-out;
-
-  &::before, &::after {
-    display: block;
-    width: 40px;
-    height: 4px;
-    border-radius: 3px;
-    background: var(--color-brown);
-    transition: all 0.3s ease-in-out;
-  }
-
-  &::before, &::after {
-    content: "";
-    position: absolute;
-  }
-
-  &::before {
-    transform: translateY(12px);
-  }
-
-  &::after {
-    transform: translateY(-12px);
-  }
-
-  &.active {
-    background: none;
-    width: 0px;
-  }
+  border-radius: 3px;
+  opacity: 1;
+  left: 0;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: 0.25s ease-in-out;
+  -moz-transition: 0.25s ease-in-out;
+  -o-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
 }
 
-.active.burger-line {
-  &::before {
-    transform: rotate(45deg);
-  }
+#burger span:nth-child(1) {
+  top: 0px;
+}
 
-  &::after {
-    transform: rotate(-45deg);
-  }
+#burger span:nth-child(2),
+#burger span:nth-child(3) {
+  top: 12px;
+}
+
+#burger span:nth-child(4) {
+  top: 24px;
+}
+
+#burger.open span:nth-child(1) {
+  top: 18px;
+  width: 0%;
+  left: 50%;
+}
+
+#burger.open span:nth-child(2) {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+#burger.open span:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+#burger.open span:nth-child(4) {
+  top: 18px;
+  width: 0%;
+  left: 50%;
 }
 
 @media screen and (min-width: 600px) {
-  .burger {
+  #burger {
     display: none;
   }
 }

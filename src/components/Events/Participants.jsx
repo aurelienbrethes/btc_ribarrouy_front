@@ -20,14 +20,11 @@ const Participants = () => {
   const { idEventParticipants, setParticipants, participants, events } =
     useContext(Context);
 
-  const [categoryToDisplay, setCategoryToDisplay] = useState("");
-  const [displayAllCat, setDisplayAllCat] = useState(true);
+  const [categoryToDisplay, setCategoryToDisplay] = useState("all");
 
   const handleChangeCategory = (category) => {
     setCategoryToDisplay(category);
-    setDisplayAllCat(false);
   };
-  console.log(categoryToDisplay);
 
   useEffect(() => {
     axios
@@ -59,7 +56,7 @@ const Participants = () => {
         name="sortParticipants"
         id="sortParticipants"
       >
-        <option value="" onClick={() => setDisplayAllCat(true)}>
+        <option value="all" onClick={() => setCategoryToDisplay("all")}>
           Toutes
         </option>
         {categories.map((category, index) => (
@@ -68,7 +65,7 @@ const Participants = () => {
           </option>
         ))}
       </select>
-      {(displayAllCat
+      {(categoryToDisplay === "all"
         ? categories
         : categories.filter((category) => category === categoryToDisplay)
       ).map((category, index) => (

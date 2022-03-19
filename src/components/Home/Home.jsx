@@ -1,4 +1,4 @@
-import logo from "../assets/logo_btc.gif";
+import logo from "../../assets/logo_btc.gif";
 
 function Home() {
   return (

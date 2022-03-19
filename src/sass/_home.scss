@@ -1,16 +1,16 @@
 .home {
+  min-height: 100vh;
+  width: 100%;
+  margin-top: 15vh;
+
+  &__logoContainer {
+    display: flex;
+    justify-content: center;
+    background-color: var(--color-black);
     min-height: 100vh;
-    width: 100%;
-    margin-top: 15vh;
 
-
-    &__logoContainer {
-        display: flex;
-        justify-content: center;
-        background-color: var(--color-black);
-
-        img {
-            height: 300px;
-        }
+    img {
+      height: 300px;
     }
+  }
 }
