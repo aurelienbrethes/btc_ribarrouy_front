@@ -50,21 +50,24 @@ const Participants = () => {
         <h3>{new Date(currentEvent.date).toLocaleDateString()}</h3>
         <h3>{currentEvent.place}</h3>
       </section>
-      <p>Filtrer par catégorie :</p>
-      <select
-        onChange={(e) => handleChangeCategory(e.target.value)}
-        name="sortParticipants"
-        id="sortParticipants"
-      >
-        <option value="all" onClick={() => setCategoryToDisplay("all")}>
-          Toutes
-        </option>
-        {categories.map((category, index) => (
-          <option key={index} value={category}>
-            {category}
+      <section className="participant__filter">
+        <p className="participant__filter-title">Filtrer par catégorie :</p>
+        <select
+          className="participant__filter-select"
+          onChange={(e) => handleChangeCategory(e.target.value)}
+          name="sortParticipants"
+          id="sortParticipants"
+        >
+          <option value="all" onClick={() => setCategoryToDisplay("all")}>
+            Toutes
           </option>
-        ))}
-      </select>
+          {categories.map((category, index) => (
+            <option key={index} value={category}>
+              {category}
+            </option>
+          ))}
+        </select>
+      </section>
       {(categoryToDisplay === "all"
         ? categories
         : categories.filter((category) => category === categoryToDisplay)

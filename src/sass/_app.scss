@@ -5,11 +5,13 @@
   --color-black: #141414;
   --color-brown: #e1a54a;
   --color-white: #f0f0f0;
+  --color-yellow: #fcd69c;
 }
 
 html {
   scroll-behavior: smooth;
   background: linear-gradient(#f0f0f0, #ededed);
+  width: 100%;
 }
 
 h1 {

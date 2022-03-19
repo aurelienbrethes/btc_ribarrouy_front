@@ -69,7 +69,7 @@ const Events = ({ setShowModal }) => {
             )}
           </section>
           <section>
-            <button onClick={() => setShowModalCreateEvent(true)}>
+            <button id="addEvent" onClick={() => setShowModalCreateEvent(true)}>
               Ajouter un évènement
             </button>
             {showModalCreateEvent && (

@@ -7,6 +7,7 @@ import { Route, Routes } from "react-router-dom";
 import { ContextProvider } from "./contexts/Context";
 import Participants from "./components/Events/Participants";
 import { ToastContainer } from "react-toastify";
+import AlphaBar from "./components/AlphaBar";
 
 function App() {
   const [wheel, setWheel] = useState(true);
@@ -25,6 +26,7 @@ function App() {
       <ContextProvider>
         <header>
           <Header wheel={wheel} />
+          <AlphaBar />
         </header>
         <main>
           <Routes>
