@@ -1,5 +1,6 @@
 import { useState } from "react";
-import Header from "./components/Header/Header";
+// import Header from "./components/Header/Header";
+import NavBar from "./components/Header/NavBar";
 import Home from "./components/Home/Home";
 import Contact from "./components/Contact";
 import Events from "./components/Events/Events";
@@ -21,11 +22,11 @@ function App() {
   };
 
   return (
-    <div className="App" onWheel={(e) => wheelFunction(e)}>
+    <div onWheel={(e) => wheelFunction(e)}>
       <ToastContainer position="top-center" limit={1} autoClose={2000} />
       <ContextProvider>
-        <header>
-          <Header wheel={wheel} />
+        <header className="w-screen">
+          <NavBar wheel={wheel} />
           <AlphaBar />
         </header>
         <main>

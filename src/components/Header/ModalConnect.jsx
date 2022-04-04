@@ -35,10 +35,13 @@ const ModalConnect = ({ setModalConnect, modalConnect }) => {
 
   return (
     <div
-      className={modalConnect ? "modalBack" : "displayNone"}
+      className={modalConnect ? "w-screen h-screen" : "hidden"}
       onClick={() => handleParentsClick()}
     >
-      <form className="modalBack__modal" onClick={(e) => handleChildClick(e)}>
+      <form
+        className="absolute flex flex-col items-center justify-around w-1/2 translate-x-1/2 translate-y-1/2 bg-red-500 rounded h-72"
+        onClick={(e) => handleChildClick(e)}
+      >
         <label htmlFor="email">Email</label>
         <input type="email" onChange={(e) => setEmail(e.target.value)} />
         <label htmlFor="password">Mot de passe</label>
