@@ -20,14 +20,12 @@ const Event = ({ title, description, date, place, idEvent }) => {
   };
 
   return (
-    <div className="eventContainer">
+    <div className="flex flex-col items-center justify-between w-1/6 h-40 bg-red-400">
       <h2>{title}</h2>
       <p>{dateToDisplay}</p>
       <button onClick={() => openModalInscriptions()}>Détails</button>
       <div
-        className={
-          showModal ? "eventContainer__modal" : "eventContainer__displayNone"
-        }
+        className={showModal ? "visible" : "hidden"}
         onClick={() => handleParentsClick()}
       >
         <ModalInscription

@@ -44,26 +44,22 @@ export default function NavBar(wheel) {
     {
       index: 0,
       label: "Accueil",
-      path: "/home",
-      effectDuration: 0.4,
+      path: "/",
     },
     {
       index: 1,
       label: "Evènements",
       path: "/events",
-      effectDuration: 0.6,
     },
     {
       index: 2,
       label: "Contact",
       path: "/Contact",
-      effectDuration: 0.8,
     },
     {
       index: 3,
       label: labelConnect,
       path: "/",
-      effectDuration: 1,
     },
   ];
 
@@ -89,7 +85,7 @@ export default function NavBar(wheel) {
                           to={link.path}
                           onClick={() => connect(link.label)}
                         >
-                          <p>{link.label}</p>
+                          <p className="text-white">{link.label}</p>
                         </Link>
                       </div>
                     ))}
@@ -138,28 +134,19 @@ export default function NavBar(wheel) {
                         animate={{ x: 40 }}
                         transition={{
                           ease: "easeOut",
-                          duration: link.effectDuration,
+                          duration: link.index * 0.2 + 0.4,
                         }}
                         variants={variations}
                       >
-                        {" "}
                         <Link
                           to={link.path}
                           onClick={() => connect(link.label)}
                         >
-                          <p>{link.label}</p>
+                          <p className="text-white">{link.label}</p>
                         </Link>
                       </motion.div>
                     </div>
                   ))}
-
-                  <motion.div
-                    animate={{ x: 40 }}
-                    transition={{
-                      ease: "easeOut",
-                      duration: 1,
-                    }}
-                  ></motion.div>
                 </nav>
               </Disclosure.Button>
             </motion.div>

@@ -1,5 +1,8 @@
 import { useEffect, useState, useContext } from "react";
 import axios from "axios";
+import H1 from "../UI/H1.jsx";
+import H2 from "../UI/H2.jsx";
+
 import Event from "./Event.jsx";
 import Context from "../../contexts/Context";
 import ModalCreacteEvent from "./ModalCreateEvent.jsx";
@@ -28,10 +31,10 @@ const Events = ({ setShowModal }) => {
   }, [events]);
 
   return (
-    <div className="events">
-      <h1>Nos évènements</h1>
-      <h2>A venir</h2>
-      <section className="events__container">
+    <div className="flex flex-col w-full bg-500-red items center">
+      <H1> Coucou </H1>
+      <H2> A venir </H2>
+      <section className="flex flex-wrap justify-around">
         {nextEvents.length ? (
           nextEvents.map((event, index) => (
             <Event
@@ -45,13 +48,13 @@ const Events = ({ setShowModal }) => {
             />
           ))
         ) : (
-          <p>Aucun évènements à venir</p>
+          <p className="bg-blue-300">Aucun évènements à venir</p>
         )}
       </section>
       {cookies.monCookie && (
-        <div>
-          <h2>Passés</h2>
-          <section className="events__container">
+        <div className="bg-blue-300">
+          <H2>Passés</H2>
+          <section>
             {pastEvents.length ? (
               pastEvents.map((event, index) => (
                 <Event
@@ -69,7 +72,7 @@ const Events = ({ setShowModal }) => {
             )}
           </section>
           <section>
-            <button id="addEvent" onClick={() => setShowModalCreateEvent(true)}>
+            <button onClick={() => setShowModalCreateEvent(true)}>
               Ajouter un évènement
             </button>
             {showModalCreateEvent && (
