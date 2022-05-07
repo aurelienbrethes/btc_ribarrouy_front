@@ -2,7 +2,7 @@
   "name": "btc_ribarrouy_front",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://aurelienbrethes.github.io/btc_ribarrouy_front/",
+  "homepage": "https://ribarrouy-front.vercel.app/",
   "dependencies": {
     "@headlessui/react": "^1.4.2",
     "@heroicons/react": "^1.0.5",
@@ -25,9 +25,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "tailwind": "npx tailwindcss -i ./src/global.css -o ./dist/output.css --watch",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "tailwind": "npx tailwindcss -i ./src/global.css -o ./dist/output.css --watch"
   },
   "eslintConfig": {
     "extends": [
