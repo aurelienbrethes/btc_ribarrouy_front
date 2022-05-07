@@ -1,5 +1,6 @@
 import { useState, useContext } from "react";
 import axios from "axios";
+import CustomButton from "../UI/CustomButton";
 import Context from "../../contexts/Context";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -43,26 +44,48 @@ const ModalUpdateEvent = () => {
 
   return (
     <div
-      className={showModalUpdateEvent ? "modalBack" : "displayNone"}
+      className={
+        showModalUpdateEvent
+          ? "flex justify-center overflow-y-auto pt-5 fixed inset-0 bg-yellow-200"
+          : "hidden"
+      }
       onClick={() => handleParentsClick()}
     >
-      <form className="modalBack__modal" onClick={(e) => handleChildClick(e)}>
-        <label htmlFor="title">Titre</label>
+      <form
+        className="flex flex-col items-center justify-around w-5/6"
+        onClick={(e) => handleChildClick(e)}
+      >
+        <label className="my-3" htmlFor="title">
+          Titre
+        </label>
         <input type="text" onChange={(e) => setTitle(e.target.value)} />
-        <label htmlFor="description">Description</label>
+        <label className="my-3" htmlFor="description">
+          Description
+        </label>
         <textarea
           name="description"
           id="description"
-          cols="50"
+          cols="30"
           rows="10"
           onChange={(e) => setDescription(e.target.value)}
         ></textarea>
-        <label htmlFor="place">Lieu</label>
+        <label className="my-3" htmlFor="place">
+          Lieu
+        </label>
         <input type="text" onChange={(e) => setPlace(e.target.value)} />
-        <label htmlFor="date">Date</label>
+        <label className="my-3" htmlFor="date">
+          Date
+        </label>
         <input type="date" onChange={(e) => setDate(e.target.value)} />
-        <button type="submit" onClick={(e) => handleUpdateEvent(e)}>
-          Modifier
+        <button
+          className="mt-6"
+          type="submit"
+          onClick={(e) => handleUpdateEvent(e)}
+        >
+          <CustomButton> Modifier</CustomButton>
+        </button>
+        <button onClick={() => setShowModalUpdateEvent(false)}>
+          <CustomButton>Fermer</CustomButton>
         </button>
       </form>
     </div>

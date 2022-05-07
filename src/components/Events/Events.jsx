@@ -31,10 +31,10 @@ const Events = ({ setShowModal }) => {
   }, [events]);
 
   return (
-    <div className="flex flex-col w-full bg-500-red items center">
-      <H1> Coucou </H1>
+    <div className="flex flex-col w-full items center">
+      <H1> Evènements </H1>
       <H2> A venir </H2>
-      <section className="flex flex-wrap justify-around">
+      <section className="flex flex-wrap justify-between">
         {nextEvents.length ? (
           nextEvents.map((event, index) => (
             <Event
@@ -54,7 +54,7 @@ const Events = ({ setShowModal }) => {
       {cookies.monCookie && (
         <div className="bg-blue-300">
           <H2>Passés</H2>
-          <section>
+          <section className="my-6">
             {pastEvents.length ? (
               pastEvents.map((event, index) => (
                 <Event
@@ -71,7 +71,7 @@ const Events = ({ setShowModal }) => {
               <p>Aucun évènements passés</p>
             )}
           </section>
-          <section>
+          <section className="my-6">
             <button onClick={() => setShowModalCreateEvent(true)}>
               Ajouter un évènement
             </button>

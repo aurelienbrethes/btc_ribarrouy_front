@@ -35,7 +35,7 @@ const ModalConnect = ({ setModalConnect, modalConnect }) => {
 
   return (
     <div
-      className={modalConnect ? "w-screen h-screen" : "hidden"}
+      className={modalConnect ? "fixed inset-0 bg-gray-200" : "hidden"}
       onClick={() => handleParentsClick()}
     >
       <form

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useContext } from "react";
-import Button from "../UI/Button";
+import CustomButton from "../UI/CustomButton";
 import H2 from "../UI/H2";
 
 import Context from "../../contexts/Context";
@@ -15,6 +15,7 @@ for (let i = 0; i < 30; i++) {
 }
 
 const ModalInscription = ({
+  showModal,
   title,
   description,
   date,
@@ -111,21 +112,25 @@ const ModalInscription = ({
 
   return (
     <div
-      className="absolute inset-0 flex flex-col items-center mt-28 bg-zinc-300"
+      className={
+        showModal
+          ? " inset-0 flex justify-center fixed bg-yellow-300"
+          : "hidden"
+      }
       onClick={() => setShowModal(false)}
     >
       <div
-        className="z-10 flex flex-col items-center w-11/12 mt-10 bg-zinc-200 inset-5"
+        className="flex flex-col items-center p-6 mt-20 overflow-auto lg:mt-36 bg-zinc-200"
         onClick={(e) => handleChildClick(e)}
       >
-        <section className="flex bg-red-100">
-          <aside className="w-1/4 mx-3">
+        <section className="flex flex-col bg-red-100 md:flex-row">
+          <aside className="flex flex-col items-start justify-around mt-2 md:px-3 h-5/6">
             <H2>{title}</H2>
-            <p>{date}</p>
-            <p>{place}</p>
-            <p>{description}</p>
+            <p className="my-2">{date}</p>
+            <p className="my-2">{place}</p>
+            <p className="my-2">{description}</p>
           </aside>
-          <aside className="mx-3">
+          <aside className="mx-3 my-5">
             <form action="submit flex flex-col items-center">
               <h2>Inscriptions :</h2>
               <div className="flex justify-between my-2">
@@ -224,31 +229,46 @@ const ModalInscription = ({
                   ))}
                 </select>
               </div>
-              <Button type="submit" onClick={(e) => handleSubmit(e)}>
-                S'inscrire
-              </Button>
+
+              <button type="submit" onClick={(e) => handleSubmit(e)}>
+                <CustomButton>S'inscrire</CustomButton>
+              </button>
             </form>
           </aside>
         </section>
         {cookies.monCookie ? (
-          <div>
-            <div className="flex">
-              <Button>
-                <Link to="/participants">
-                  <p>Voir les participants</p>
-                </Link>
-              </Button>
-              <Button onClick={() => handleUpdateEvent()}>Modifier</Button>
-              <Button onClick={() => setDeleteEvent(true)}>Supprimer</Button>
-              <Button onClick={() => setShowModal(false)}>Fermer</Button>
-            </div>
-            {deleteEvent && (
-              <div>
-                <p>Êtes-vous sûr de vouloir supprimer cet évènement ?</p>
-                <button onClick={(e) => handleDeleteEvent(e)}>Oui</button>
-                <button onClick={() => setDeleteEvent(false)}>Non</button>
+          <div className="w-full ">
+            <div className="flex flex-col justify-between md:flex-row">
+              <div className="flex flex-col">
+                <CustomButton>
+                  <Link to="/participants">
+                    <p>Voir les participants</p>
+                  </Link>
+                </CustomButton>
+                <button onClick={() => handleUpdateEvent()}>
+                  <CustomButton>Modifier</CustomButton>
+                </button>
               </div>
-            )}
+              <div className="flex flex-col">
+                <button onClick={() => setDeleteEvent(true)}>
+                  <CustomButton>Supprimer</CustomButton>
+                </button>
+                {deleteEvent && (
+                  <div className="w-full bg-red-200 ">
+                    <p className="w-full text-center">
+                      Êtes-vous sûr de vouloir supprimer cet évènement ?
+                    </p>
+                    <div className="flex justify-around">
+                      <button onClick={(e) => handleDeleteEvent(e)}>Oui</button>
+                      <button onClick={() => setDeleteEvent(false)}>Non</button>
+                    </div>
+                  </div>
+                )}
+                <button onClick={() => setShowModal(false)}>
+                  <CustomButton>Fermer</CustomButton>
+                </button>
+              </div>
+            </div>
           </div>
         ) : (
           <div>

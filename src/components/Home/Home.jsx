@@ -16,7 +16,7 @@ function Home() {
 
   return (
     <div>
-      <section className="flex flex-col items-center">
+      <section className="flex flex-col items-center ">
         <div className="flex flex-col w-1/2 m-4 bg-yellow-400 p-11">
           <label htmlFor="email">email</label>
           <input

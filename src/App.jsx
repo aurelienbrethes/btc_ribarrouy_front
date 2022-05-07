@@ -29,7 +29,7 @@ function App() {
           <NavBar wheel={wheel} />
           <AlphaBar />
         </header>
-        <main className="p-2 sm:p-5">
+        <main className="p-2">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/events" element={<Events />} />

@@ -100,12 +100,12 @@ export default function NavBar(wheel) {
                   <span className="sr-only">Open main menu</span>
                   {open ? (
                     <XIcon
-                      className="absolute z-10 w-8 h-8 hover:scale-125 top-6 right-6"
+                      className="absolute z-30 w-8 h-8 hover:scale-125 top-6 right-6"
                       aria-hidden="true"
                     />
                   ) : (
                     <MenuIcon
-                      className="absolute z-10 w-12 h-12 p-2 rounded-lg hover:bg-zinc-700 bg-zinc-800 top-4 right-4"
+                      className="absolute z-30 w-12 h-12 p-2 rounded-lg hover:bg-zinc-700 bg-zinc-800 top-4 right-4"
                       aria-hidden="true"
                     />
                   )}
